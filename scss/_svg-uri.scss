@@ -1,0 +1,69 @@
+////
+/// Helper function to easily use an SVG inline in CSS
+/// without encoding it to base64, saving bytes.
+/// It also helps with browser support.
+////
+
+/// A small function allowing skipping base64 encoding
+/// and simply pasting the SVG markup right in the CSS.
+/// @author Jakob Eriksen
+/// @link http://codepen.io/jakob-e/pen/doMoML
+/// @param {String} $svg - SVG image to encode
+/// @return {String} - Encoded SVG data uri
+
+//  Helper function to replace characters in a string
+@function str-replace($string, $search, $replace: '') {
+  $index: str-index($string, $search);
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+    str-replace(str-slice($string, $index +
+    str-length($search)), $search, $replace);
+  }
+  @return $string;
+}
+
+@function svg-url($svg){
+  // Chunk up string in order to avoid "SystemStackError: stack level too deep"
+  $encoded:'';
+  $slice: 2000;
+  $index: 0;
+  $loops: ceil(str-length($svg)/$slice);
+  @for $i from 1 through $loops {
+    $chunk: str-slice($svg, $index, $index + $slice - 1);
+    $chunk: str-replace($chunk,'"', '\'');
+    $chunk: str-replace($chunk,'%', '%25');
+    $chunk: str-replace($chunk,'&', '%26');
+    $chunk: str-replace($chunk,'#', '%23');       
+    $chunk: str-replace($chunk,'{', '%7B');
+    $chunk: str-replace($chunk,'}', '%7D');         
+    $chunk: str-replace($chunk,'<', '%3C');
+    $chunk: str-replace($chunk,'>', '%3E');
+    // $chunk: str-replace($chunk, '|', '%7C');
+    // $chunk: str-replace($chunk, '[', '%5B');
+    // $chunk: str-replace($chunk, ']', '%5D');
+    // $chunk: str-replace($chunk, '^', '%5E');
+    // $chunk: str-replace($chunk, '`', '%60');
+    // $chunk: str-replace($chunk, ';', '%3B');
+    // $chunk: str-replace($chunk, '?', '%3F');
+    $chunk: str-replace($chunk, ':', '%3A');
+    // $chunk: str-replace($chunk, '@', '%40');
+    $chunk: str-replace($chunk, '=', '%3D');
+    $chunk: str-replace($chunk, ' ', '%20');
+    $chunk: str-replace($chunk, '/', '%2F');
+    $chunk: str-replace($chunk, ',', '%2C');
+    $encoded: #{$encoded}#{$chunk};
+    $index: $index + $slice;
+  }
+  @return url("data:image/svg+xml;charset=utf-8,#{$encoded}");
+}
+
+@mixin svg-background($svg){
+    background-image: svg-url($svg);        
+} 
+
+//  Replace a defined fill color with another one
+@function svg-url-replace-fill($svg, $fill-to-replace, $new-fill) {
+  $replaced-svg: str-replace($svg, '#{$fill-to-replace}', $new-fill);
+  $replaced-svg-url: svg-url('#{$replaced-svg}');
+  @return $replaced-svg-url;
+}

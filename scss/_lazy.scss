@@ -1,0 +1,32 @@
+/* Preloader */
+.swiper-lazy-preloader {
+  width: 42px;
+  height: 42px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -21px;
+  margin-top: -21px;
+  z-index: 10;
+  transform-origin: 50%;
+  animation: swiper-preloader-spin 1s steps(12, end) infinite;
+}
+.swiper-lazy-preloader:after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background-image: svg-url($lazy-preloader-bg);
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+
+}
+.swiper-lazy-preloader-white:after {
+  background-image: svg-url-replace-fill($lazy-preloader-bg, $lazy-preloader-bgcolor, $white);
+}
+@keyframes swiper-preloader-spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}

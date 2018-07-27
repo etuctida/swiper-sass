@@ -1,0 +1,44 @@
+$white: #ffffff;
+$black: #000000;
+$themeColor: #007aff;
+
+$navColors: ();
+$navColors: map-merge((
+	"white": $white,
+	"black": $black
+), $navColors);
+
+$disabled-opacity: 0.35;
+
+// > Navigation
+$nav-btn-width: 27px;
+$nav-btn-height: 44px;
+$nav-btn-gutter: 10px;
+$nav-btn-prev-bg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M0,22L22,0l2.1,2.1L4.2,22l19.9,19.9L22,44L0,22L0,22L0,22z' fill='#{$themeColor}'/></svg>";
+$nav-btn-next-bg: "<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 27 44'><path d='M27,22L27,22L5,44l-2.1-2.1L22.8,22L2.9,2.1L5,0L27,22L27,22z' fill='#{$themeColor}'/></svg>";
+$nav-btn-disabled-opacity: $disabled-opacity;
+
+// > Pagination
+$pagination-bullet-width: 8px;
+$pagination-bullet-height: 8px;
+$pagination-bullet-gutter: 10px;
+$pagination-bullet-space-v: 6px;
+$pagination-bullet-space-h: 4px;
+$pagination-bullet-border-radius: 100%;
+$pagination-disabled-opacity: $disabled-opacity;
+
+$pagination-progress-height: 4px;
+
+// > Scrollbar
+$scrollbar-border-radius: 10px;
+$scrollbar-height: 5px;
+$scrollbar-bg: rgba($black, .1);
+$scrollbar-drag-bg: rgba($black, .5);
+
+// > Lazy
+$lazy-preloader-bgcolor: #6c6c6c;
+$lazy-preloader-bg: "<svg viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'><defs><line id='l' x1='60' x2='60' y1='7' y2='27' stroke='#{$lazy-preloader-bgcolor}' stroke-width='11' stroke-linecap='round'/></defs><g><use xlink:href='#l' opacity='.27'/><use xlink:href='#l' opacity='.27' transform='rotate(30 60,60)'/><use xlink:href='#l' opacity='.27' transform='rotate(60 60,60)'/><use xlink:href='#l' opacity='.27' transform='rotate(90 60,60)'/><use xlink:href='#l' opacity='.27' transform='rotate(120 60,60)'/><use xlink:href='#l' opacity='.27' transform='rotate(150 60,60)'/><use xlink:href='#l' opacity='.37' transform='rotate(180 60,60)'/><use xlink:href='#l' opacity='.46' transform='rotate(210 60,60)'/><use xlink:href='#l' opacity='.56' transform='rotate(240 60,60)'/><use xlink:href='#l' opacity='.66' transform='rotate(270 60,60)'/><use xlink:href='#l' opacity='.75' transform='rotate(300 60,60)'/><use xlink:href='#l' opacity='.85' transform='rotate(330 60,60)'/></g></svg>";
+
+// > Effects
+$cube-shadow-bg: $black;
+$cube-shadow-blur: 50px;

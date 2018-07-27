@@ -1,0 +1,30 @@
+/**
+ * Swiper 4.2.2
+ * Most modern mobile touch slider and framework with hardware accelerated transitions
+ * http://www.idangero.us/swiper/
+ *
+ * Copyright 2014-2018 Vladimir Kharlampidi
+ * SCSS by etuctida
+ *
+ * Released under the MIT License
+ *
+ * Released on: April 1, 2018
+ */
+
+
+@import "svg-uri";
+@import "variables";
+@import "mixins";
+@import "core";
+
+//IMPORT_COMPONENTS
+@import "navigation";
+@import "pagination";
+@import "scrollbar";
+@import "zoom";
+@import "lazy";
+@import "a11y";
+@import "effect-fade";
+@import "effect-cube";
+@import "effect-flip";
+@import "effect-coverflow";
